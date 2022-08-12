@@ -104,7 +104,7 @@
         <item>
          <widget class="QPushButton" name="remove_pushButton">
           <property name="text">
-           <string>Uninstall AppImge</string>
+           <string>Uninstall AppImage</string>
           </property>
          </widget>
         </item>
