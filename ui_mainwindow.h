@@ -197,7 +197,7 @@ public:
         label_2->setText(QApplication::translate("MainWindow", "Select an AppImage to remove.", Q_NULLPTR));
         remv_dir_lineEdit->setText(QString());
         select_open_dir2->setText(QApplication::translate("MainWindow", "Select", Q_NULLPTR));
-        remove_pushButton->setText(QApplication::translate("MainWindow", "Uninstall AppImge", Q_NULLPTR));
+        remove_pushButton->setText(QApplication::translate("MainWindow", "Uninstall AppImage", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(remove_tab_1), QApplication::translate("MainWindow", "Uninstall", Q_NULLPTR));
         label_3->setText(QApplication::translate("MainWindow", "Default installation directory", Q_NULLPTR));
         slct_default_pushButton->setText(QApplication::translate("MainWindow", "Select", Q_NULLPTR));
