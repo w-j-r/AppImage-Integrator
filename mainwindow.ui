@@ -6,147 +6,128 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>597</width>
-    <height>239</height>
+    <width>653</width>
+    <height>438</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
-      <widget class="QWidget" name="install_tab_1">
+      <widget class="QWidget" name="add_tab">
        <attribute name="title">
-        <string>Install</string>
+        <string>Add</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="1">
+         <widget class="QPushButton" name="add_button">
           <property name="text">
-           <string>Select an AppImage to install.</string>
+           <string>Add</string>
           </property>
          </widget>
         </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QLineEdit" name="inst_dir_lineEdit">
-            <property name="text">
-             <string>/home/whit/Downloads</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="select_open_dir1">
-            <property name="text">
-             <string>Select</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QPushButton" name="install_pushButton">
+        <item row="1" column="1">
+         <widget class="QPushButton" name="remove_botton">
           <property name="text">
-           <string>Install</string>
+           <string>Remove</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" rowspan="3">
+         <widget class="QListWidget" name="add_list_widget"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QPushButton" name="integrate_button">
+          <property name="text">
+           <string>Integrate AppImages</string>
           </property>
          </widget>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="remove_tab_1">
+      <widget class="QWidget" name="remove_tab">
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
        <attribute name="title">
-        <string>Uninstall</string>
+        <string>Remove</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label_2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QCheckBox" name="select_all">
           <property name="text">
-           <string>Select an AppImage to remove.</string>
+           <string>Select all</string>
           </property>
          </widget>
         </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QLineEdit" name="remv_dir_lineEdit">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="select_open_dir2">
-            <property name="text">
-             <string>Select</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QPushButton" name="remove_pushButton">
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="delete_app_check_box">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delete the selected AppImages from disk when removing.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
-           <string>Uninstall AppImage</string>
+           <string>Delete AppImages</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QListWidget" name="remove_list_widget">
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAsNeeded</enum>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0" colspan="2">
+         <widget class="QPushButton" name="remove_push_button">
+          <property name="text">
+           <string>Remove selected AppImages</string>
           </property>
          </widget>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="settings_tab3">
+      <widget class="QWidget" name="settings_tab">
        <attribute name="title">
         <string>Settings</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_4">
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Default installation directory</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="default_dir_lineEdit"/>
-          </item>
-          <item>
-           <widget class="QPushButton" name="slct_default_pushButton">
-            <property name="text">
-             <string>Select</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="delete_app_checkBox">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QLabel" name="default_dir_label">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The location AppImages will be stored.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
-           <string>Delete AppImage after uninstalling.</string>
+           <string>Default directory:</string>
           </property>
          </widget>
         </item>
-        <item alignment="Qt::AlignRight">
-         <widget class="QPushButton" name="save_pushButton">
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="default_dir_line_edit">
           <property name="text">
-           <string>Save</string>
+           <string>/home/whit/Applications</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QPushButton" name="change_dir_push_button">
+          <property name="text">
+           <string>Change</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QCheckBox" name="dark_mode_enable">
+          <property name="text">
+           <string>Enable dark mode. (requires restart)</string>
           </property>
          </widget>
         </item>
