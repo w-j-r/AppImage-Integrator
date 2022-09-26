@@ -1,4 +1,4 @@
-# AppImage-Installer
+# AppImage-Integrator
 A simple program to integrate AppImages into the Linux desktop.
 Made with Qt6
 
