@@ -16,8 +16,6 @@
 #include <QMessageBox>
 #include <QDir>
 
-
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -62,7 +60,7 @@ void MainWindow::dropEvent(QDropEvent *event)
         foreach (QUrl url, event->mimeData()->urls()) {
             if (url.path().endsWith(".appimage", Qt::CaseInsensitive)) {
                 ui->add_list_widget->addItem(url.path());
-                MainWindow::set_app_list(url.path());
+                this->set_app_list(url.path());
             }
         }
     }
@@ -94,7 +92,7 @@ void MainWindow::get_settings() {
     if (!settings.contains("start")) {
         ui->default_dir_line_edit->setText(QDir::homePath() + "/Applications");
         ui->delete_app_check_box->setChecked(false);
-        MainWindow::save_settings();
+        this->save_settings();
 
     // else restore saved settings.
     } else {
@@ -119,7 +117,7 @@ void MainWindow::remove_list_widget_items() {
 
           //add keys to qlistwidget and make checkable
          for(int i=0; i < keys.count(); ++i){
-            MainWindow::set_remove_apps_list(keys.at(i));
+            this->set_remove_apps_list(keys.at(i));
             QListWidgetItem* remove_items = new QListWidgetItem;
             remove_items->setText(keys.at(i));
             remove_items->setFlags(remove_items->flags() | Qt::ItemIsUserCheckable);
@@ -183,7 +181,7 @@ void MainWindow::on_add_button_clicked()
     //send to listwidget
     for (QString item: select_appimage) {
         ui->add_list_widget->addItem(item);
-        MainWindow::set_app_list(item);
+        this->set_app_list(item);
     }
 }
 
@@ -192,8 +190,8 @@ void MainWindow::on_remove_botton_clicked()
 {
     //delete the entry from our list
     const QString item_to_remove = ui->add_list_widget->currentItem()->text();
-    if (MainWindow::get_app_list().contains(item_to_remove)) {
-        MainWindow::remove_path_from_list(item_to_remove);
+    if (this->get_app_list().contains(item_to_remove)) {
+        this->remove_path_from_list(item_to_remove);
     }
     // and delete entry from the qlistwidget
     qDeleteAll(ui->add_list_widget->selectedItems());
@@ -205,10 +203,10 @@ void MainWindow::on_integrate_button_clicked()
 {
     if (!ui->default_dir_line_edit->text().isEmpty() &&
         QFileInfo(ui->default_dir_line_edit->text()).exists() &&
-        !MainWindow::get_app_list().isEmpty()) {
+        !this->get_app_list().isEmpty()) {
 
         //create Integrator object, connect the done signal, begin the process
-        integrator = new Integrator(ui->default_dir_line_edit->text(), MainWindow::get_app_list());
+        integrator = new Integrator(ui->default_dir_line_edit->text(), this->get_app_list());
         QObject::connect(integrator, SIGNAL(done_signal()), this, SLOT(done_slot()), Qt::DirectConnection);
 
         integrator->iterate_app_list();
@@ -226,11 +224,11 @@ void MainWindow::on_remove_push_button_clicked()
 
     for (int i {}; i < ui->remove_list_widget->count(); ++i) {
         if (ui->remove_list_widget->item(i)->checkState() == Qt::Checked) {
-            apps_to_remove.append(MainWindow::get_remove_apps_list().at(i));
+            apps_to_remove.append(this->get_remove_apps_list().at(i));
             items_to_delete.push_back(ui->remove_list_widget->item(i));
         }
     }
-    MainWindow::remove_apps(&apps_to_remove, &items_to_delete);
+    this->remove_apps(&apps_to_remove, &items_to_delete);
 }
 
 
@@ -245,9 +243,9 @@ void MainWindow::on_change_dir_push_button_clicked()
 
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
-    if (index == 1 && !MainWindow::get_remove_tab_clicked()) {
-        MainWindow::remove_list_widget_items();
-        MainWindow::set_remove_tab_clicked(true);
+    if (index == 1 && !this->get_remove_tab_clicked()) {
+        this->remove_list_widget_items();
+        this->set_remove_tab_clicked(true);
     }
 }
 
@@ -278,10 +276,10 @@ void MainWindow::on_delete_app_check_box_stateChanged(int arg1)
 void MainWindow::done_slot()
 {
     ui->add_list_widget->clear();                //clear qlistwidgetitems from add tab
-    MainWindow::clear_app_list();                //reset the list
-    if (MainWindow::get_remove_tab_clicked()) {  //if the remove tab has already been clicked
+    this->clear_app_list();                //reset the list
+    if (this->get_remove_tab_clicked()) {  //if the remove tab has already been clicked
         ui->remove_list_widget->clear();         //clear the list items
-        MainWindow::remove_list_widget_items();  //update the remove list widget
+        this->remove_list_widget_items();  //update the remove list widget
     }
     delete integrator;
 }
